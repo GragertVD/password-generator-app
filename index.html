@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+
+  <title>Frontend Mentor | Password Generator</title>
+
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,700;1,400;1,800&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+
+  <main class="main pas-gen">
+    <div class="pas-gen__container">
+      <h1 class="pas-gen__title">Password Generator</h1>
+      <div class="pas-gen__output-container">
+        <output class="pas-gen__output" type="">PTx1f5DaFX</output>
+      </div>
+      <div class="pas-gen__setting gen-setting">
+        <div class="gen-setting__lenght-container">
+          <p class="gen-setting__lenght-text">Character Length</p>
+          <output class="gen-setting__lenght-num" type="text">0</output>
+        </div>
+        <div class="gen-setting__slider"></div>
+        <div class="gen-setting__checkbox-blok">
+          <div class="gen-setting__checkbox checkbox">
+            <input class="checkbox__input" type="checkbox" id="c_1">
+            <label class="checkbox__label" for="c_1">Include Uppercase Letters</label>
+          </div>
+          <div class="gen-setting__checkbox checkbox">
+            <input class="checkbox__input" type="checkbox" id="c_2">
+            <label class="checkbox__label" for="c_2">Include Lowercase Letters</label>
+          </div>
+          <div class="gen-setting__checkbox checkbox">
+            <input class="checkbox__input" type="checkbox" id="c_3">
+            <label class="checkbox__label" for="c_3">Include Numbers</label>
+          </div>
+          <div class="gen-setting__checkbox checkbox">
+            <input class="checkbox__input" type="checkbox" id="c_4">
+            <label class="checkbox__label" for="c_4">Include Symbols</label>
+          </div>
+        </div>
+        <div class="gen-setting__stength-container password-strength">
+          <h3 class="password-strength__title">Strength</h3>
+          <div class="password-strength__level">
+            <p class="password-strength__level-text">Medium</p> 
+            <div class="password-strength__indicate-blok indicate-blok">
+              <div class="indicate-blok__levl"></div>
+              <div class="indicate-blok__levl"></div>
+              <div class="indicate-blok__levl"></div>
+              <div class="indicate-blok__levl"></div>
+            </div>
+          </div>
+        </div>
+        <div class="gen-setting__btn">GENERATE</div>
+      </div>
+    </div>
+  </main>
+
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>
+    Coded by <a href="#">Vladimir Gragert</a>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+
+</html>

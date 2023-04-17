@@ -1,0 +1,226 @@
+@use "sass:math";
+
+@font-face {
+  font-family: "JetBrains Mono Bold";
+  src: url("../assets/fonts/static/JetBrainsMono-Bold.ttf");
+}
+
+//REM
+@function rem($px) {
+  $result: math.div($px, 16)+rem;
+  @return $result;
+}
+
+
+$colorDark: #24232C;
+$colorGrey: #817D92;
+$colorWhite: #E6E5EA;
+$colorBlack: #18171F;
+$colorGreen: #A4FFAF;
+$colorRed: #F64A4A;
+$colorOrange: #FB7C58;
+$colorYellow: #F8CD65;
+
+$widthDesktop: 1440px;
+$widthMobile: 375px;
+
+
+.main {
+  font-family: 'JetBrains Mono Bold';
+  color: $colorWhite;
+  font-weight: 700;
+  font-size: rem(18);
+  line-height: math.div(24, 18);
+}
+
+.pas-gen {
+  background-color: $colorBlack;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: rem(20) rem(10);
+
+  &__container {
+    // background-color: $colorDark;
+    // width: 300px;
+    // height: 300px;
+    min-width: 540px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__title {
+    color: $colorGrey;
+    font-weight: 700;
+    font-size: rem(24);
+    line-height: math.div(32, 24);
+    margin-bottom: 31px;
+    text-align: center;
+  }
+
+  &__output-container {
+    width: 100%;
+    height: 80px;
+    padding: 19px 32px;
+    background-color: $colorDark;
+    margin-bottom: 24px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &::after {
+      content: '';
+      background-image: url("../assets/images/icon-copy.svg");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      cursor: pointer;
+      display: inline-block;
+      width: rem(21);
+      height: rem(24);
+    }
+  }
+
+  &__output {
+    font-weight: 700;
+    font-size: rem(32);
+    line-height: math.div(42, 32);
+  }
+
+  &__setting {}
+}
+
+.gen-setting {
+  background-color: $colorDark;
+  padding: 24px 32px 32px 32px;
+  width: 100%;
+  &__lenght-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 17px;
+  }
+
+  &__lenght-text {}
+
+  &__lenght-num {
+    font-size: rem(32);
+    color: $colorGreen;
+  }
+
+  &__slider {}
+
+  &__checkbox-blok{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 32px;
+  }
+
+  &__checkbox {}
+
+  &__stength-container {}
+
+  &__btn {
+    background-color: $colorGreen;
+    color: $colorDark;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: rem(65);
+  }
+}
+
+.checkbox {
+  &__label {
+    cursor: pointer;
+
+    position: relative;
+
+    &::before {
+      content: '';
+      position: relative;
+      z-index: 1;
+      display: inline-block;
+      width: rem(20);
+      height: rem(20);
+      margin-right: rem(15);
+      border: 1px solid $colorWhite;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      z-index: 2;
+      opacity: 0;
+      display: inline-block;
+      width: rem(20);
+      height: rem(20);
+      left: 1px;
+      top: -3px;
+      background-color: $colorGreen;
+      transition: opacity 0.2s;
+    }
+
+    input:checked+&::before {
+      // border: 1px solid $colorDark;
+    }
+
+    input:checked+&::after {
+      opacity: 1;
+    }
+  }
+
+  &__input {
+    position: absolute;
+    width: rem(20);
+    height: rem(20);
+    z-index: -1;
+    opacity: 0;
+  }
+}
+
+.password-strength {
+  background-color: $colorBlack;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 32px;
+  margin-bottom: 32px;
+  &__title {
+    text-transform: uppercase;
+    color: $colorGrey;
+    margin-right: 15px;
+  }
+
+  &__level {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+  &__level-text {}
+
+  &__indicate-blok {}
+}
+
+.indicate-blok {
+  display: flex;
+  gap: 8px;
+  &__levl {
+    height: rem(24);
+    width: rem(10);
+    border: 1px solid $colorWhite;
+  }
+}
+
+.attribution {
+  background-color: $colorBlack;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
