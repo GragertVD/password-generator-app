@@ -247,10 +247,8 @@
 input:checked + .checkbox__label::after {
   opacity: 1;
 }
-@media (max-width: 440px) {
-  input:checked + .checkbox__label::before {
-    border: 1px solid #24232C;
-  }
+input:checked + .checkbox__label::before {
+  border: 1px solid #24232C;
 }
 .checkbox__input {
   position: absolute;
