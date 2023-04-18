@@ -32,7 +32,7 @@ Users should be able to:
 
 ### Screenshot
 
-![](https://github.com/GragertVD/age-calculator-app-main/blob/master/screenshot.JPG)
+![](https://github.com/GragertVD/password-generator-app/blob/master/screenshot.JPG)
 
 
 ### Links
