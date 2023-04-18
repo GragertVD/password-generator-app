@@ -269,6 +269,11 @@ $widthMobile: 375px;
       height: rem(12);
       margin-left: 20px;
     }
+        &:active::after {
+          content: '';
+          transition: all 0.15s;
+          transform: translate(3px, 0);
+        }
   }
 }
 

@@ -220,6 +220,11 @@
   height: 0.75rem;
   margin-left: 20px;
 }
+.gen-setting__btn:active::after {
+  content: "";
+  transition: all 0.15s;
+  transform: translate(3px, 0);
+}
 
 .checkbox__label {
   cursor: pointer;
