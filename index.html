@@ -10,6 +10,7 @@
 
   <title>Frontend Mentor | Password Generator</title>
 
+  <link rel="stylesheet" href="css/nouislider.min.css">
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,14 +25,14 @@
     <div class="pas-gen__container">
       <h1 class="pas-gen__title">Password Generator</h1>
       <div class="pas-gen__output-container">
-        <output class="pas-gen__output" type="">PTx1f5DaFX</output>
+        <output class="pas-gen__output" type="text">PTx1f5DaFX</output>
       </div>
       <div class="pas-gen__setting gen-setting">
         <div class="gen-setting__lenght-container">
           <p class="gen-setting__lenght-text">Character Length</p>
           <output class="gen-setting__lenght-num" type="text">0</output>
         </div>
-        <div class="gen-setting__slider"></div>
+        <div class="gen-setting__slider" id="slider"></div>
         <div class="gen-setting__checkbox-blok">
           <div class="gen-setting__checkbox checkbox">
             <input class="checkbox__input" type="checkbox" id="c_1">
@@ -53,7 +54,6 @@
         <div class="gen-setting__stength-container password-strength">
           <h3 class="password-strength__title">Strength</h3>
           <div class="password-strength__level">
-            <p class="password-strength__level-text">Medium</p> 
             <div class="password-strength__indicate-blok indicate-blok">
               <div class="indicate-blok__levl"></div>
               <div class="indicate-blok__levl"></div>
@@ -72,6 +72,7 @@
     Coded by <a href="#">Vladimir Gragert</a>
   </div>
 
+  <script src="js/nouislider.min.js"></script>
   <script src="js/main.js"></script>
 </body>
 

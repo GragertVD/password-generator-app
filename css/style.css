@@ -9,6 +9,16 @@
   font-size: 1.125rem;
   line-height: 1.3333333333;
 }
+@media (max-width: 440px) {
+  .main {
+    font-size: 1rem;
+  }
+}
+@media (max-width: 380px) {
+  .main {
+    font-size: 0.875rem;
+  }
+}
 
 .pas-gen {
   background-color: #18171F;
@@ -25,6 +35,12 @@
   flex-direction: column;
   align-items: center;
 }
+@media (max-width: 580px) {
+  .pas-gen__container {
+    min-width: 290px;
+    width: 100%;
+  }
+}
 .pas-gen__title {
   color: #817D92;
   font-weight: 700;
@@ -33,15 +49,54 @@
   margin-bottom: 31px;
   text-align: center;
 }
+@media (max-width: 440px) {
+  .pas-gen__title {
+    margin-bottom: 15px;
+  }
+}
 .pas-gen__output-container {
   width: 100%;
   height: 80px;
   padding: 19px 32px;
   background-color: #24232C;
   margin-bottom: 24px;
+  pointer-events: none;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
+}
+@media (max-width: 440px) {
+  .pas-gen__output-container {
+    height: 65px;
+  }
+}
+@media (max-width: 380px) {
+  .pas-gen__output-container {
+    padding: 12px 18px;
+    margin-bottom: 15px;
+  }
+}
+.pas-gen_active .pas-gen__output-container {
+  cursor: pointer;
+  pointer-events: all;
+}
+.pas-gen__output-container.copied::before {
+  content: "COPIED";
+  position: absolute;
+  z-index: 2;
+  right: 75px;
+  color: #A4FFAF;
+  font-weight: 700;
+  font-size: 1.125rem;
+  line-height: 1.3333333333;
+  display: inline-block;
+  pointer-events: none;
+}
+@media (max-width: 580px) {
+  .pas-gen__output-container.copied::before {
+    top: -20px;
+  }
 }
 .pas-gen__output-container::after {
   content: "";
@@ -49,7 +104,6 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  cursor: pointer;
   display: inline-block;
   width: 1.3125rem;
   height: 1.5rem;
@@ -58,11 +112,30 @@
   font-weight: 700;
   font-size: 2rem;
   line-height: 1.3125;
+  color: #817D92;
+}
+@media (max-width: 440px) {
+  .pas-gen__output {
+    font-size: 1.875rem;
+  }
+}
+@media (max-width: 380px) {
+  .pas-gen__output {
+    font-size: 1.5rem;
+  }
+}
+.pas-gen_active .pas-gen__output {
+  color: #E6E5EA;
 }
 .gen-setting {
   background-color: #24232C;
   padding: 24px 32px 32px 32px;
   width: 100%;
+}
+@media (max-width: 380px) {
+  .gen-setting {
+    padding: 12px 18px 18px 18px;
+  }
 }
 .gen-setting__lenght-container {
   display: flex;
@@ -74,11 +147,36 @@
   font-size: 2rem;
   color: #A4FFAF;
 }
+.gen-setting__slider {
+  margin-bottom: 2rem;
+  height: 0.5rem;
+  border: none;
+}
+.gen-setting__slider .noUi-connects {
+  background: #18171F;
+  border: none;
+}
+.gen-setting__slider .noUi-connect {
+  background: #A4FFAF;
+}
+.gen-setting__slider .noUi-handle {
+  height: 1.75rem;
+  width: 1.75rem;
+  top: -0.6875rem;
+  border-radius: 50%;
+  background-color: #E6E5EA;
+}
 .gen-setting__checkbox-blok {
   display: flex;
   flex-direction: column;
   gap: 20px;
   margin-bottom: 32px;
+}
+@media (max-width: 440px) {
+  .gen-setting__checkbox-blok {
+    margin-bottom: 24px;
+    gap: 15px;
+  }
 }
 .gen-setting__btn {
   background-color: #A4FFAF;
@@ -88,6 +186,24 @@
   align-items: center;
   justify-content: center;
   height: 4.0625rem;
+  font-size: 1.375rem;
+  pointer-events: none;
+  transition: all 0.15s;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+.pas-gen_active .gen-setting__btn {
+  cursor: pointer;
+  pointer-events: all;
+}
+@media (any-hover: hover) {
+  .pas-gen_active .gen-setting__btn:hover {
+    filter: brightness(0.9);
+  }
+}
+.pas-gen_active .gen-setting__btn:active {
+  box-shadow: inset 0px 0px 5px 3px rgba(0, 0, 0, 0.5);
 }
 
 .checkbox__label {
@@ -117,8 +233,23 @@
   background-color: #A4FFAF;
   transition: opacity 0.2s;
 }
+@media (max-width: 440px) {
+  .checkbox__label::after {
+    top: -5px;
+  }
+}
+@media (max-width: 380px) {
+  .checkbox__label::after {
+    top: -6px;
+  }
+}
 input:checked + .checkbox__label::after {
   opacity: 1;
+}
+@media (max-width: 440px) {
+  input:checked + .checkbox__label::before {
+    border: 1px solid #24232C;
+  }
 }
 .checkbox__input {
   position: absolute;
@@ -136,6 +267,16 @@ input:checked + .checkbox__label::after {
   padding: 22px 32px;
   margin-bottom: 32px;
 }
+@media (max-width: 440px) {
+  .password-strength {
+    margin-bottom: 24px;
+  }
+}
+@media (max-width: 440px) {
+  .password-strength {
+    padding: 18px 18px;
+  }
+}
 .password-strength__title {
   text-transform: uppercase;
   color: #817D92;
@@ -150,10 +291,59 @@ input:checked + .checkbox__label::after {
   display: flex;
   gap: 8px;
 }
+.pas-gen_active .indicate-blok.lvl-1::before {
+  content: "TOO WEAK !";
+}
+@media (max-width: 440px) {
+  .pas-gen_active .indicate-blok.lvl-1::before {
+    content: "TOO WEAK!";
+    font-size: 0.875rem;
+  }
+}
+.pas-gen_active .indicate-blok.lvl-2::before {
+  content: "WEAK";
+}
+@media (max-width: 440px) {
+  .pas-gen_active .indicate-blok.lvl-2::before {
+    font-size: 0.875rem;
+  }
+}
+.pas-gen_active .indicate-blok.lvl-3::before {
+  content: "MEDIUM";
+}
+@media (max-width: 440px) {
+  .pas-gen_active .indicate-blok.lvl-3::before {
+    font-size: 0.875rem;
+  }
+}
+.pas-gen_active .indicate-blok.lvl-4::before {
+  content: "STRONG";
+}
+@media (max-width: 440px) {
+  .pas-gen_active .indicate-blok.lvl-4::before {
+    font-size: 0.875rem;
+  }
+}
 .indicate-blok__levl {
   height: 1.5rem;
   width: 0.625rem;
   border: 1px solid #E6E5EA;
+}
+.pas-gen_active .lvl-1 .indicate-blok__levl:nth-child(-n+1) {
+  background-color: #F64A4A;
+  border: 1px solid #F64A4A;
+}
+.pas-gen_active .lvl-2 .indicate-blok__levl:nth-child(-n+2) {
+  background-color: #FB7C58;
+  border: 1px solid #FB7C58;
+}
+.pas-gen_active .lvl-3 .indicate-blok__levl:nth-child(-n+3) {
+  background-color: #F8CD65;
+  border: 1px solid #F8CD65;
+}
+.pas-gen_active .lvl-4 .indicate-blok__levl:nth-child(-n+4) {
+  background-color: #A4FFAF;
+  border: 1px solid #A4FFAF;
 }
 
 .attribution {
@@ -161,4 +351,8 @@ input:checked + .checkbox__label::after {
   display: flex;
   flex-direction: column;
   align-items: center;
+  color: #24232C;
+}
+.attribution a {
+  color: #24232C;
 }/*# sourceMappingURL=style.css.map */

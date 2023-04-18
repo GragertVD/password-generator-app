@@ -1,156 +1,134 @@
+var lenghtNum = document.querySelector('.gen-setting__lenght-num');
+var mySlider = document.getElementById('slider');
+const maxLenght = 16;
 
-document.addEventListener("DOMContentLoaded", () => {
-
-  const inputDay = document.querySelector('.input-days');
-  const inputMonth = document.querySelector('.input-months');
-  const inputYear = document.querySelector('.input-years');
-
-  const button = document.querySelector('.calculator__user-input-btn');
-
-  inputDay.addEventListener('input', function () {
-    if(inputDay.nextElementSibling.innerHTML == "Must be a valid date"){
-      inputDay.parentElement.classList.remove("error");
-      inputMonth.parentElement.classList.remove("error");
-      inputYear.parentElement.classList.remove("error");
-    }
-    if (inputDay.value > 31){
-      inputDay.nextElementSibling.innerHTML = "Must be a valid day"
-      inputDay.parentElement.classList.add("error");
-    }else{
-      inputDay.parentElement.classList.remove("error");
-    }
-  });
-  inputMonth.addEventListener('input', function () {
-    if (inputDay.nextElementSibling.innerHTML == "Must be a valid date") {
-      inputDay.parentElement.classList.remove("error");
-      inputMonth.parentElement.classList.remove("error");
-      inputYear.parentElement.classList.remove("error");
-    }
-    if (inputMonth.value > 12) {
-      inputMonth.nextElementSibling.innerHTML = "Must be a valid mounth"
-      inputMonth.parentElement.classList.add("error");
-    } else {
-      inputMonth.parentElement.classList.remove("error");
-      
-    }
-  });
-  inputYear.addEventListener('input', function () {
-    if (inputDay.nextElementSibling.innerHTML == "Must be a valid date") {
-      inputDay.parentElement.classList.remove("error");
-      inputMonth.parentElement.classList.remove("error");
-      inputYear.parentElement.classList.remove("error");
-    }
-    let Data = new Date();
-    if (inputYear.value > Data.getFullYear()) {
-      inputYear.nextElementSibling.innerHTML = "Must be in the past"
-      inputYear.parentElement.classList.add("error");
-    } else {
-      inputYear.parentElement.classList.remove("error");
-      
-    }
-  });
-  inputYear.addEventListener('change', function () {
-    let Data = new Date();
-    if (inputYear.value < 0) {
-      inputYear.value = -inputYear.value;
-      inputYear.value = Data.getFullYear() - inputYear.value; 
-    }
-  });
-
-  button.addEventListener('click', function () {
-
-    day = inputDay.value;
-    month = inputMonth.value;
-    year = inputYear.value;
-
-
-    if (!day){ 
-      inputDay.parentElement.classList.add("error");
-      inputDay.nextElementSibling.innerHTML = "This field is required"
-    }
-    if (!month) {
-      inputMonth.parentElement.classList.add("error");
-      inputMonth.nextElementSibling.innerHTML = "This field is required"
-    }
-    if (!year) {
-      inputYear.parentElement.classList.add("error");
-      inputYear.nextElementSibling.innerHTML = "This field is required"
-    }
-    if (!day || !month || !year){
-      return;
-    }
-
-    let date = new Date(year, month - 1, day);
-    let currentData = new Date();
-
-    if (!(date.getFullYear() == year && date.getMonth() == month - 1 && date.getDate() == day) || (document.getElementsByClassName('error').length) || date>currentData || year<0){
-      inputDay.parentElement.classList.add("error");
-      inputDay.nextElementSibling.innerHTML = "Must be a valid date"
-      inputMonth.parentElement.classList.add("error");
-      inputMonth.nextElementSibling.innerHTML = ""
-      inputYear.parentElement.classList.add("error");
-      inputYear.nextElementSibling.innerHTML = "";
-      return;
-    }
-
-
-    
-    let age_year = currentData.getFullYear() - date.getFullYear();
-    let age_mounth = 0;
-    let age_day = 0;
-    if (currentData < new Date(currentData.getFullYear(), month - 1, day)) {
-      age_year = age_year - 1;
-      age_mounth = currentData.getMonth()+1;
-      age_day = currentData.getDate();
-    }else{
-      if (currentData.getMonth() + 1 === month){
-        age_mounth = 0;
-        age_day = currentData.getDate() - day;
-        console.log(age_day);
-      }else{
-        age_mounth = currentData.getMonth() + 1 - month;
-        if (currentData.getDate() < day){
-          age_mounth = age_mounth -1;
-          age_day = currentData.getDate() + new Date(currentData.getFullYear(), currentData.getMonth(), 0).getDate()-day;
-        }else{
-          age_day = currentData.getDate() - day;
-        }
-      }
-
-    }
-
-    const outputDay = document.querySelector('.output-days').querySelector('span');
-    const outputMonth = document.querySelector('.output-months').querySelector('span');
-    const outputYear = document.querySelector('.output-years').querySelector('span');
-
-    OutputNumber(outputYear, age_year);
-    OutputNumber(outputMonth, age_mounth);
-    OutputNumber(outputDay, age_day);
-
-  });
-
-  function OutputNumber(el, num) {
-    let step = 50;
-    num > 25 && (step = 35);
-    num > 50 && (step = 25);
-    num > 75 && (step = 20);
-    num > 100 && (step = 10);
-    num > 200 && (step = 1);
-
-    let n = 0;
-    if(num === 0){
-      el.innerHTML = n;
-    }else{
-      let inteval = setInterval(() => {
-        n = n + 1;
-        if (n === num){
-          clearInterval(inteval);
-        } 
-        el.innerHTML = n;
-      }, step);
-    }
-
+noUiSlider.create(mySlider, {
+  start: 0,
+  connect: [true, false],
+  step: 1,
+  range: {
+    'min': 0,
+    'max': maxLenght
   }
 
 });
+//Ждем загрузки страницы
+document.addEventListener("DOMContentLoaded", () => { 
+
+  const checkboxUppercase = document.getElementById('c_1');
+  const checkboxLowercase = document.getElementById('c_2');
+  const checkboxNumber = document.getElementById('c_3');
+  const checkboxSymbol = document.getElementById('c_4');
+
+  let includeUppercase = 0;
+  let includeLowercase = 0;
+  let includeNumber = 0;
+  let includeSymbol = 0;
+
+//В зависимости от чекбокса выбираем символы для генерации
+  checkboxUppercase.addEventListener('change', (el) => {
+    includeUppercase = Number(el.target.checked);
+    UpdateActivePasGen();
+    UpdateIndicateLevel();
+  });
+  checkboxLowercase.addEventListener('change', (el) => {
+    includeLowercase = Number(el.target.checked);
+    UpdateActivePasGen();
+    UpdateIndicateLevel();
+  });
+  checkboxNumber.addEventListener('change', (el) => {
+    includeNumber = Number(el.target.checked);
+    UpdateActivePasGen();
+    UpdateIndicateLevel();
+  });
+  checkboxSymbol.addEventListener('change', (el) => {
+    includeSymbol = Number(el.target.checked);
+    UpdateActivePasGen();
+    UpdateIndicateLevel();
+  });
+
+//генерируем пароль по нажатию кнопки
+  const buttonGen = document.querySelector('.gen-setting__btn');
+  buttonGen.addEventListener('click', () => {
+    let password = "";
+    const symbolsUppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const symbolsLovercase = "abcdefghijklmnopqrstuvwxyz";
+    const symbolsNumber = "0123456789";
+    const symbolsSymbols = "!№;%:?*()_+=$&#";
+    let symbols = "";
+    let lenght = Math.round(mySlider.noUiSlider.get());
+
+    if (includeUppercase) {
+      symbols += symbolsUppercase;
+    }
+    if (includeLowercase) {
+      symbols += symbolsLovercase;
+    }
+    if (includeNumber) {
+      symbols += symbolsNumber;
+    }
+    if (includeSymbol) {
+      symbols += symbolsSymbols;
+    }
+    symbols = Array.from(symbols);
+    symbols.sort(() => Math.random() - 0.5);
+    symbols = symbols.join('');
+
+    for (let i = 0; i < lenght; i++) {
+      password += symbols.charAt(Math.floor(Math.random() * symbols.length));
+    }
+    const elOutput = document.querySelector('.pas-gen__output');
+    elOutput.innerHTML = password;
+  });
+
+//функция обновления индикации уровня сложности пароля
+  function UpdateIndicateLevel() {
+    const elIndicateLevel = document.querySelector('.indicate-blok');
+    const mySlider = document.getElementById('slider');
+
+    let lenght = Math.round(mySlider.noUiSlider.get());
+    let lvl = Math.round(lenght * 4 / maxLenght) + includeUppercase + includeLowercase + includeNumber + includeSymbol - 3;
+
+    if (lvl < 1 || lenght < 4) lvl = 1;
+    if (lvl > 4) lvl = 4;
+
+
+    elIndicateLevel.classList.remove(`lvl-1`);
+    elIndicateLevel.classList.remove(`lvl-2`);
+    elIndicateLevel.classList.remove(`lvl-3`);
+    elIndicateLevel.classList.remove(`lvl-4`);
+
+
+    elIndicateLevel.classList.add(`lvl-${lvl}`);
+  };
+
+  // событие обновления слайдера 
+  mySlider.noUiSlider.on('update', function () {
+    let result = Math.round(mySlider.noUiSlider.get());
+    lenghtNum.innerHTML = result;
+    UpdateActivePasGen();
+  });
+
+//Обновление состояние формы активная/не актичная 
+  function UpdateActivePasGen() {
+    let result = Math.round(mySlider.noUiSlider.get());
+    const elPasGen = document.querySelector('.pas-gen');
+    if (result && (includeUppercase || includeLowercase || includeNumber || includeSymbol)) {
+      elPasGen.classList.add("pas-gen_active");
+    } else {
+      elPasGen.classList.remove("pas-gen_active");
+    }
+    UpdateIndicateLevel();
+  };
+
+//Копирование пароля
+  const elOutput = document.querySelector('.pas-gen__output-container');
+  elOutput.addEventListener('click', function () {
+    navigator.clipboard.writeText(elOutput.querySelector('.pas-gen__output').innerHTML)
+    elOutput.classList.add('copied');
+    setTimeout(() => { elOutput.classList.remove("copied"); }, 600);
+  });
+
+});
+
 
