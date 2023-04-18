@@ -188,6 +188,7 @@ $widthMobile: 375px;
     margin-bottom: rem(32);
     height: rem(8);
     border: none;
+    cursor: pointer;
 
     & .noUi-connects {
       background: $colorBlack;

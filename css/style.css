@@ -151,6 +151,7 @@
   margin-bottom: 2rem;
   height: 0.5rem;
   border: none;
+  cursor: pointer;
 }
 .gen-setting__slider .noUi-connects {
   background: #18171F;
