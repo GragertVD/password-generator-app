@@ -194,6 +194,8 @@
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
+  display: flex;
+  align-items: center;
 }
 .pas-gen_active .gen-setting__btn {
   cursor: pointer;
@@ -206,6 +208,17 @@
 }
 .pas-gen_active .gen-setting__btn:active {
   box-shadow: inset 0px 0px 5px 3px rgba(0, 0, 0, 0.5);
+}
+.gen-setting__btn::after {
+  content: "";
+  background-image: url("../assets/images/icon-arrow-right.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: inline-block;
+  width: 0.9375rem;
+  height: 0.75rem;
+  margin-left: 20px;
 }
 
 .checkbox__label {

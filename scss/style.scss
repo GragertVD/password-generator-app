@@ -255,6 +255,20 @@ $widthMobile: 375px;
     .pas-gen_active &:active {
       box-shadow: inset 0px 0px 5px 3px rgba(0, 0, 0, 0.5);
     }
+
+    display: flex;
+    align-items: center;
+    &::after {
+      content: '';
+      background-image: url("../assets/images/icon-arrow-right.svg");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      display: inline-block;
+      width: rem(15);
+      height: rem(12);
+      margin-left: 20px;
+    }
   }
 }
 
