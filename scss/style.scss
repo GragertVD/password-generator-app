@@ -305,6 +305,10 @@ $widthMobile: 375px;
       left: 1px;
       top: -3px;
       background-color: $colorGreen;
+      background-image: url("../assets/images/icon-check.svg");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: auto;
       transition: opacity 0.2s;
 
       @media (max-width: 440px) {
