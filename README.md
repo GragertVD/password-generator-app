@@ -29,7 +29,7 @@ Users should be able to:
 
 ### Links
 
-- Live Site URL: [https://password-generator-app-gragert.vercel.app/](https://age-calculator-app-main-gragert.vercel.app/)
+- Live Site URL: [https://password-generator-app-gragert.vercel.app/](https://password-generator-app-gragert.vercel.app/)
 
 ## Author
 
